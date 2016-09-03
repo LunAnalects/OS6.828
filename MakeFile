@@ -1,0 +1,17 @@
+UTIL = util.c
+SRC = sh.c
+EXE = $(SRC:%.c=%)
+
+OUTDIR = ./bin/
+
+
+CC = clang
+CFLAGS = -std=c99 -I . -Wall -Wextra -Werror -Wconversion -Wno-unused-parameter 
+DUMPFLAGS = -Wall -std=c99 -I. 
+
+
+sh : sh.o util.o
+    echo "sh ...\n"
+    clang -std=c99 -I . -Wall sh.o util.o -o sh
+sh.o: sh.c
+util.o: util.h util.c
